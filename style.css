@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&family=Red+Hat+Mono:wght@600&display=swap');
+
+html {
+	background: linear-gradient(
+		133deg,
+		#62ce5f 24.33%,
+		#4fdb4d 48.69%,
+		#43b840 49.94%,
+		#119c0e 74.05%
+	);
+	height: 100vh;
+}
+
+.pass-generator {
+	--color-orange: #ff720c;
+	--color-black: #333333;
+	--color-green: #3ebb52;
+
+	overflow: hidden;
+	box-sizing: border-box;
+	margin: 80px auto 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 80px 8px;
+	width: 500px;
+	max-width: calc(100% - 16px);
+	background-color: white;
+	border-radius: 8px;
+}
+
+.pass-generator__wrapper {
+}
+
+.pass-generator__length {
+}
+
+.pass-generator__length-top {
+	user-select: none;
+}
+
+.pass-generator__length-text {
+	font-family: 'Inter', sans-serif;
+	font-size: 16px;
+	line-height: normal;
+	color: var(--color-black);
+}
+
+.pass-generator__length-wrap {
+	display: inline-flex;
+	margin: 0 8px;
+	background-color: var(--color-orange);
+	border-radius: 4px;
+}
+
+.pass-generator__length-num {
+	font-family: 'Inter', sans-serif;
+	font-size: 16px;
+	line-height: normal;
+	color: white;
+	cursor: pointer;
+}
+
+.pass-generator__length-num--less {
+	padding: 3px 3px 3px 12px;
+}
+
+.pass-generator__length-num--more {
+	padding: 3px 12px 3px 3px;
+}
+
+.pass-generator__length-input {
+	width: 20px;
+	border: none;
+	font-family: 'Inter', sans-serif;
+	font-size: 16px;
+	line-height: normal;
+	text-align: center;
+	background-color: var(--color-orange);
+	color: white;
+	outline: none;
+}
+
+.pass-generator__length-input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+
+.pass-generator__length-range {
+	-webkit-appearance: none;
+	width: 100%;
+	height: 2px;
+	background-color: var(--color-orange);
+}
+
+.pass-generator__length-range::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background-color: var(--color-orange);
+}
+
+.pass-generator__result {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 32px 0 30px;
+	position: relative;
+	padding-top: 43px;
+	cursor: pointer;
+}
+
+.pass-generator__result-pass {
+	position: absolute;
+	top: 0;
+	font-family: 'Red Hat Mono', monospace;
+	font-size: 32px;
+	font-weight: 600;
+	line-height: normal;
+	text-align: center;
+	color: #777;
+	white-space: nowrap;
+}
+
+.pass-generator__result-link {
+	font-family: 'Inter', sans-serif;
+	font-size: 12px;
+	line-height: normal;
+	color: var(--color-orange);
+	transition: 0.3s;
+}
+
+.pass-generator__result-link--copy {
+	color: var(--color-green);
+}
+
+.pass-generator__option {
+	list-style-type: none;
+	margin: 0;
+	padding-left: 0;
+}
+
+.pass-generator__option-item {
+	position: relative;
+	width: fit-content;
+	padding: 8px 0;
+	font-family: 'Inter', sans-serif;
+	font-size: 16px;
+	font-weight: 200;
+	line-height: normal;
+	color: var(--color-black);
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.pass-generator__option-item:hover {
+	font-weight: 600;
+}
+
+.pass-generator__option-item--active {
+	font-weight: 400;
+	color: var(--color-orange);
+}
+
+.pass-generator__option-item--upper {
+}
+
+.pass-generator__option-item--lower {
+}
+
+.pass-generator__option-item--num {
+}
+
+.pass-generator__option-item--char {
+}
+
+.pass-generator__option-info {
+	position: absolute;
+	left: 78px;
+	width: 16px;
+	height: 19px;
+	background-image: url('img/info.svg');
+	cursor: help;
+}
+
+.pass-generator__option-info::after {
+	content: attr(data-title);
+	position: absolute;
+	width: 280px;
+	background-color: var(--color-orange);
+	border-radius: 4px;
+	color: white;
+	padding: 5px;
+	top: 20px;
+	font-weight: 400;
+	opacity: 0;
+	visibility: hidden;
+	transition: 0.3s;
+}
+
+.pass-generator__option-info:hover::after {
+	opacity: 1;
+	visibility: visible;
+}
+
+.pass-generator__option-item--white {
+}
+
+@media (max-width: 576px) {
+	.pass-generator__result-pass {
+		font-size: 21px;
+	}
+}
