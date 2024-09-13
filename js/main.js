@@ -1,148 +1,8 @@
 'use strict';
+import { html } from './view.js';
+import { dictionarys } from './model.js';
 
-const body = document.createElement('div');
-body.innerHTML = `
-<div class="pass-generator">
-<div class="pass-generator__wrapper">
-	<div class="pass-generator__length">
-		<div class="pass-generator__length-top">
-			<span class="pass-generator__length-text">Длина пароля:</span>
-			<span class="pass-generator__length-wrap">
-				<span
-					class="pass-generator__length-num pass-generator__length-num--less"
-					>-</span
-				>
-				<input
-					class="pass-generator__length-input"
-					type="number"
-					value="8"
-					min="6"
-					max="24"
-				/>
-				<span
-					class="pass-generator__length-num pass-generator__length-num--more"
-					>+</span
-				>
-			</span>
-			<span class="pass-generator__length-text">символов</span>
-		</div>
-		<input
-			class="pass-generator__length-range"
-			type="range"
-			min="6"
-			max="24"
-			value="8"
-		/>
-	</div>
-
-	<div class="pass-generator__result">
-		<span class="pass-generator__result-pass">00000000</span>
-		<span class="pass-generator__result-link"
-			>Скопировать в буфер обмена</span
-		>
-	</div>
-
-	<ul class="pass-generator__option">
-		<li
-			class="pass-generator__option-item pass-generator__option-item--active pass-generator__option-item--upper"
-		>
-			Верхний регистр
-		</li>
-		<li
-			class="pass-generator__option-item pass-generator__option-item--active pass-generator__option-item--lower"
-		>
-			Нижний регистр
-		</li>
-		<li
-			class="pass-generator__option-item pass-generator__option-item--active pass-generator__option-item--num"
-		>
-			Цифры
-		</li>
-		<li
-			class="pass-generator__option-item pass-generator__option-item--char"
-		>
-			Символы
-			<span
-				class="pass-generator__option-info"
-				data-title="! # $ % & ( ) * + . / : ; = > ? @ [ \ ] ^ \` { | } ~ ' - < _ >"
-			></span>
-		</li>
-		<li
-			class="pass-generator__option-item pass-generator__option-item--white"
-		>
-			Пробел
-		</li>
-	</ul>
-</div>
-</div>
-`;
-
-document.body.appendChild(body);
-
-// Словари
-var upp = [
-	'A',
-	'B',
-	'C',
-	'D',
-	'E',
-	'F',
-	'G',
-	'H',
-	'I',
-	'J',
-	'K',
-	'L',
-	'M',
-	'N',
-	'O',
-	'P',
-	'Q',
-	'R',
-	'S',
-	'T',
-	'U',
-	'V',
-	'W',
-	'X',
-	'Y',
-	'Z',
-];
-var low = upp.map((el) => el.toLowerCase());
-var num = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-var sym = [
-	'!',
-	'#',
-	'$',
-	'%',
-	'&',
-	'(',
-	')',
-	'*',
-	'+',
-	'.',
-	'/',
-	':',
-	';',
-	'=',
-	'>',
-	'?',
-	'@',
-	'[',
-	'\\',
-	']',
-	'^',
-	'`',
-	'{',
-	'|',
-	'}',
-	'~',
-	"'",
-	'-',
-	'<',
-	'_',
-	'>',
-];
+document.body.appendChild(html);
 
 // Обработка кликов на опциях
 if (document.querySelector('.pass-generator__option-item')) {
@@ -164,16 +24,16 @@ function dictionaryGenerator() {
 
 	optionsActive.forEach((el) => {
 		if (el.classList.contains('pass-generator__option-item--upper')) {
-			libSymArr = libSymArr.concat(upp);
+			libSymArr = libSymArr.concat(dictionarys.upp);
 		}
 		if (el.classList.contains('pass-generator__option-item--lower')) {
-			libSymArr = libSymArr.concat(low);
+			libSymArr = libSymArr.concat(dictionarys.low());
 		}
 		if (el.classList.contains('pass-generator__option-item--num')) {
-			libSymArr = libSymArr.concat(num);
+			libSymArr = libSymArr.concat(dictionarys.num);
 		}
 		if (el.classList.contains('pass-generator__option-item--char')) {
-			libSymArr = libSymArr.concat(sym);
+			libSymArr = libSymArr.concat(dictionarys.sym);
 		}
 	});
 
