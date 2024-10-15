@@ -1,77 +1,53 @@
 'use strict';
+import * as controller from './controller.js';
+import { optionsPassword } from './model.js';
 
-export const html = document.createElement('div');
-html.className = 'pass-generator';
-html.innerHTML = `
-<div class="pass-generator__wrapper">
-	<div class="pass-generator__length">
-		<div class="pass-generator__length-top">
-			<span class="pass-generator__length-text">Длина пароля:</span>
-			<span class="pass-generator__length-wrap">
-				<span
-					class="pass-generator__length-num pass-generator__length-num--less"
-					>-</span
-				>
-				<input
-					class="pass-generator__length-input"
-					type="number"
-					value="8"
-					min="6"
-					max="24"
-				/>
-				<span
-					class="pass-generator__length-num pass-generator__length-num--more"
-					>+</span
-				>
-			</span>
-			<span class="pass-generator__length-text">символов</span>
-		</div>
-		<input
-			class="pass-generator__length-range"
-			type="range"
-			min="6"
-			max="24"
-			value="8"
-		/>
-	</div>
+// Инициализация настроек
+const initializing = () => {
+	document.querySelector('.pass-generator__length-range').value =
+		document.querySelector('.pass-generator__length-input').value =
+			optionsPassword.length;
+	if (optionsPassword.upperCase)
+		document
+			.querySelector('.pass-generator__option-item--upper')
+			.classList.add('pass-generator__option-item--active');
+	if (optionsPassword.lowerCase)
+		document
+			.querySelector('.pass-generator__option-item--lower')
+			.classList.add('pass-generator__option-item--active');
+	if (optionsPassword.numbers)
+		document
+			.querySelector('.pass-generator__option-item--num')
+			.classList.add('pass-generator__option-item--active');
+	if (optionsPassword.symbols)
+		document
+			.querySelector('.pass-generator__option-item--char')
+			.classList.add('pass-generator__option-item--active');
+};
 
-	<div class="pass-generator__result">
-		<span class="pass-generator__result-pass">00000000</span>
-		<span class="pass-generator__result-link"
-			>Скопировать в буфер обмена</span
-		>
-	</div>
+// Обновление пароля
+const updatePass = () => {
+	const password = controller.passGenerator(
+		controller.dictionaryGenerator(),
+		optionsPassword.length
+	);
+	document.querySelector('.pass-generator__result-pass').innerText = password;
+};
 
-	<ul class="pass-generator__option">
-		<li
-			class="pass-generator__option-item pass-generator__option-item--active pass-generator__option-item--upper"
-		>
-			Верхний регистр
-		</li>
-		<li
-			class="pass-generator__option-item pass-generator__option-item--active pass-generator__option-item--lower"
-		>
-			Нижний регистр
-		</li>
-		<li
-			class="pass-generator__option-item pass-generator__option-item--active pass-generator__option-item--num"
-		>
-			Цифры
-		</li>
-		<li
-			class="pass-generator__option-item pass-generator__option-item--char"
-		>
-			Символы
-			<span
-				class="pass-generator__option-info"
-				data-title="! # $ % & ( ) * + . / : ; = > ? @ [ \ ] ^ \` { | } ~ ' - < _ >"
-			></span>
-		</li>
-		<li
-			class="pass-generator__option-item pass-generator__option-item--white"
-		>
-			Пробел
-		</li>
-	</ul>
-</div>
-`;
+// Копирование пароля
+document
+	.querySelector('.pass-generator__result')
+	.addEventListener('click', function () {
+		window.navigator.clipboard.writeText(
+			document.querySelector('.pass-generator__result-pass').textContent
+		);
+		// Смена цвета
+		this.querySelector('.pass-generator__result-link').classList.add(
+			'pass-generator__result-link--copy'
+		);
+		// Замена текста
+		this.querySelector('.pass-generator__result-link').innerText =
+			'Пароль скопирован в буфер обмена';
+	});
+
+export { initializing, updatePass };

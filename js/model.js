@@ -1,7 +1,17 @@
 'use strict';
 
+// Настройки по умолчанию
+export const optionsPassword = {
+	length: 8, // Длина пароля
+	upperCase: true, // Верхний регистр
+	lowerCase: true, // Нижний регистр
+	numbers: true, // Цифры
+	symbols: false, // Символы
+	whitespace: false, // Пробел
+};
+
 // Словари
-export const dictionarys = {
+export const dictionary = {
 	upp: [
 		'A',
 		'B',

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&family=Red+Hat+Mono:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&family=Red+Hat+Mono:wght@600&display=swap");
 
 html {
 	background: linear-gradient(
@@ -39,8 +39,29 @@ html {
 	user-select: none;
 }
 
+.pass-generator__length-error {
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	background-color: #e74c3c;
+	padding: 4px;
+	font-family: "Inter", sans-serif;
+	font-size: 12px;
+	line-height: normal;
+	color: white;
+	left: 50%;
+	transform: translate(-50%, -30px);
+	border-radius: 4px;
+	transition: 0.3s;
+}
+
+.pass-generator__length-error--visible {
+	opacity: 1;
+	visibility: visible;
+}
+
 .pass-generator__length-text {
-	font-family: 'Inter', sans-serif;
+	font-family: "Inter", sans-serif;
 	font-size: 16px;
 	line-height: normal;
 	color: var(--color-black);
@@ -54,7 +75,7 @@ html {
 }
 
 .pass-generator__length-num {
-	font-family: 'Inter', sans-serif;
+	font-family: "Inter", sans-serif;
 	font-size: 16px;
 	line-height: normal;
 	color: white;
@@ -72,7 +93,7 @@ html {
 .pass-generator__length-input {
 	width: 20px;
 	border: none;
-	font-family: 'Inter', sans-serif;
+	font-family: "Inter", sans-serif;
 	font-size: 16px;
 	line-height: normal;
 	text-align: center;
@@ -113,7 +134,7 @@ html {
 .pass-generator__result-pass {
 	position: absolute;
 	top: 0;
-	font-family: 'Red Hat Mono', monospace;
+	font-family: "Red Hat Mono", monospace;
 	font-size: 32px;
 	font-weight: 600;
 	line-height: normal;
@@ -123,7 +144,7 @@ html {
 }
 
 .pass-generator__result-link {
-	font-family: 'Inter', sans-serif;
+	font-family: "Inter", sans-serif;
 	font-size: 12px;
 	line-height: normal;
 	color: var(--color-orange);
@@ -144,7 +165,7 @@ html {
 	position: relative;
 	width: fit-content;
 	padding: 8px 0;
-	font-family: 'Inter', sans-serif;
+	font-family: "Inter", sans-serif;
 	font-size: 16px;
 	font-weight: 200;
 	line-height: normal;
@@ -179,7 +200,7 @@ html {
 	left: 78px;
 	width: 16px;
 	height: 19px;
-	background-image: url('img/info.svg');
+	background-image: url("img/info.svg");
 	cursor: help;
 }
 
