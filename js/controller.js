@@ -136,7 +136,19 @@ document.querySelectorAll('.pass-generator__option-item').forEach((option) => {
 					optionsPassword.symbols = true;
 			}
 		}
-		view.updatePass();
+		let password = view.updatePass();
+
+		// Добавление пробела
+		if (
+			document.querySelector(
+				'.pass-generator__option-item--white.pass-generator__option-item--active'
+			)
+		) {
+			password = password.split('');
+			password[Math.floor(Math.random() * (password.length - 2) + 1)] = ' ';
+			password = password.join('');
+		}
+		document.querySelector('.pass-generator__result-pass').innerText = password;
 	});
 });
 

@@ -2,4 +2,5 @@
 import * as view from './view.js';
 
 view.initializing();
-view.updatePass();
+document.querySelector('.pass-generator__result-pass').innerText =
+	view.updatePass();
