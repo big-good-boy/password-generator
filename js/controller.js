@@ -72,7 +72,8 @@ function synchronizeInputs(input1, input2) {
 		optionsPassword.length = document.querySelector(
 			'.pass-generator__length-input'
 		).value;
-		view.updatePass();
+		document.querySelector('.pass-generator__result-pass').innerText =
+			view.updatePass();
 	} else {
 		if (+input2.value < +input1.getAttribute('min')) {
 			document.querySelector(
