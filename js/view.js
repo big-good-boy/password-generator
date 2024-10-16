@@ -27,10 +27,21 @@ const initializing = () => {
 
 // Обновление пароля
 const updatePass = () => {
-	const password = controller.passGenerator(
+	let password = controller.passGenerator(
 		controller.dictionaryGenerator(),
 		optionsPassword.length
 	);
+
+	// Добавление пробела
+	if (
+		document.querySelector(
+			'.pass-generator__option-item--white.pass-generator__option-item--active'
+		)
+	) {
+		password = password.split('');
+		password[Math.floor(Math.random() * (password.length - 2) + 1)] = ' ';
+		password = password.join('');
+	}
 	document.querySelector('.pass-generator__result-pass').innerText = password;
 };
 
